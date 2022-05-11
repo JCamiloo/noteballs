@@ -1,7 +1,9 @@
 <template>
   <NavBar />
 
-  <router-view />
+  <div class="container is-max-desktop">
+    <RouterView />
+  </div>
 </template>
 
 <script setup>
