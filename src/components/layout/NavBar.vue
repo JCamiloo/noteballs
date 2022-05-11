@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar is-success" role="navigation" aria-label="main navigation">
-    <div class="container is-max-desktop px-2">
+    <div class="container is-max-desktop">
       <div class="navbar-brand">
         <div class="navbar-item is-size-4 is-family-monospace">
           Noteballs
@@ -35,12 +35,22 @@ import { ref } from 'vue';
 const showMobileNav = ref(false);
 </script>
 
-<style>
+<style scoped>
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 @media (max-width: 1023px) {
   .navbar-menu {
     position: absolute;
     left: 0;
     width: 100%;
+  }
+
+  .container {
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
   }
 }
 </style>

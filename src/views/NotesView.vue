@@ -1,6 +1,20 @@
 <template>
   <div class="notes">
-    <div class="card" v-for="i in 3">
+    <div class="card has-background-success-dark p-4 mb-5">
+      <div class="field">
+        <div class="control">
+          <textarea class="textarea" placeholder="Add a new note" />
+        </div>
+      </div>
+
+      <div class="field is-grouped is-grouped-right">
+        <div class="control">
+          <button class="button is-link has-background-success">Add New Note</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-4" v-for="i in 3">
       <div class="card-content">
         <div class="content">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim nesciunt quam laborum quisquam fugiat labore
@@ -16,16 +30,3 @@
     </div>
   </div>
 </template>
-
-<style>
-.card {
-  margin: 1rem;
-}
-
-@media (min-width: 1023px) {
-  .card {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-  }
-}
-</style>
