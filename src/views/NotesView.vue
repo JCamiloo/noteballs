@@ -23,6 +23,7 @@
 <script setup>
 import { ref } from 'vue'
 import Note from '@/components/notes/Note.vue'
+import { useNotesStore } from '@/stores/notesStore'
 
 const newNote = ref('')
 const newNoteRef = ref(null)
