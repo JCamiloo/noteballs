@@ -12,7 +12,10 @@
 
     <footer class="card-footer">
       <a class="card-footer-item">Edit</a>
-      <a class="card-footer-item" @click.prevent="handleDelete">Delete</a>
+      <a
+        class="card-footer-item"
+        @click.prevent="handleDelete"
+      >Delete</a>
     </footer>
   </div>
 </template>

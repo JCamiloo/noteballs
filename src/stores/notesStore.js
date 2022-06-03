@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia';
+import { defineStore } from 'pinia'
 
 export const useNotesStore = defineStore('notesStore', {
   state: () => {
@@ -13,6 +13,16 @@ export const useNotesStore = defineStore('notesStore', {
           content: "Shorter note"
         }
       ]
+    }
+  },
+  actions: {
+    addNote(newNoteContent) {
+      const note = {
+        id: new Date().getTime(),
+        content: newNoteContent
+      }
+
+      this.notes.unshift(note)
     }
   }
 })
