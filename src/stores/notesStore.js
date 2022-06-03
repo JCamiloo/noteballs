@@ -16,13 +16,16 @@ export const useNotesStore = defineStore('notesStore', {
     }
   },
   actions: {
-    addNote(newNoteContent) {
+    addNote(noteContent) {
       const note = {
         id: new Date().getTime(),
-        content: newNoteContent
+        content: noteContent
       }
 
       this.notes.unshift(note)
+    },
+    deleteNote(id) {
+      this.notes = this.notes.filter(note => note.id !== id)
     }
   }
 })

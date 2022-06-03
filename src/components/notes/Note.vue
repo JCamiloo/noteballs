@@ -3,7 +3,6 @@
     <div class="card-content">
       <div class="content">
         {{ note.content }}
-
         <div class="has-text-right has-text-grey-light mt-2">
           <small>{{ characterLength }}</small>
         </div>
@@ -14,7 +13,7 @@
       <a class="card-footer-item">Edit</a>
       <a
         class="card-footer-item"
-        @click.prevent="handleDelete"
+        @click.prevent="storeNotes.deleteNote(note.id)"
       >Delete</a>
     </footer>
   </div>
@@ -22,6 +21,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import { useNotesStore } from '@/stores/notesStore'
 
 const props = defineProps({
   note: {
@@ -30,7 +30,7 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['deleteNote'])
+const storeNotes = useNotesStore();
 
 const characterLength = computed(() => {
   const length = props.note.content.length
@@ -38,8 +38,4 @@ const characterLength = computed(() => {
 
   return `${length} ${description}`
 })
-
-const handleDelete = () => {
-  emit('deleteNote', props.note.id)
-}
 </script>
