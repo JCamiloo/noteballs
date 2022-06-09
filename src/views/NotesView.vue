@@ -1,29 +1,16 @@
 <template>
   <div class="notes">
-    <div class="card has-background-success-dark p-4 mb-5">
-      <div class="field">
-        <div class="control">
-          <textarea
-            v-model="newNote"
-            class="textarea"
-            placeholder="Add a new note"
-            ref="newNoteRef"
-          />
-        </div>
-      </div>
-
-      <div class="field is-grouped is-grouped-right">
-        <div class="control">
-          <button
-            class="button is-link has-background-success"
-            @click="addNote"
-            :disabled="!newNote"
-          >
-            Add New Note
-          </button>
-        </div>
-      </div>
-    </div>
+    <AddEditNoteVue v-model="newNote">
+      <template v-slot:buttons>
+        <button
+          @click="addNote"
+          :disabled="!newNote"
+          class="button is-link has-background-success"
+        >
+          Add New Note
+        </button>
+      </template>
+    </AddEditNoteVue>
 
     <Note
       v-for="note in storeNotes.notes"
@@ -36,6 +23,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useNotesStore } from '@/stores/notesStore'
+import AddEditNoteVue from '@/components/notes/AddEditNote.vue';
 import Note from '@/components/notes/Note.vue'
 
 const storeNotes = useNotesStore()
