@@ -7,7 +7,7 @@
           @input="$emit('update:modelValue', modelValue)"
           class="textarea"
           placeholder="Add a new note"
-          ref="newNoteRef"
+          ref="textareaRef"
         />
       </div>
     </div>
@@ -21,6 +21,8 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
 const props = defineProps({
   modelValue: {
     type: String,
@@ -29,4 +31,13 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:modelValue'])
+const textareaRef = ref(null)
+
+const focusTextarea = () => {
+  textareaRef.value.focus()
+}
+
+defineExpose({
+  focusTextarea
+})
 </script>

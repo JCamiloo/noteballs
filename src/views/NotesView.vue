@@ -1,6 +1,9 @@
 <template>
   <div class="notes">
-    <AddEditNoteVue v-model="newNote">
+    <AddEditNote
+      v-model="newNote"
+      ref="addEditNoteRef"
+    >
       <template v-slot:buttons>
         <button
           @click="addNote"
@@ -10,7 +13,7 @@
           Add New Note
         </button>
       </template>
-    </AddEditNoteVue>
+    </AddEditNote>
 
     <Note
       v-for="note in storeNotes.notes"
@@ -23,18 +26,16 @@
 <script setup>
 import { ref } from 'vue'
 import { useNotesStore } from '@/stores/notesStore'
-import AddEditNoteVue from '@/components/notes/AddEditNote.vue';
+import AddEditNote from '@/components/notes/AddEditNote.vue';
 import Note from '@/components/notes/Note.vue'
 
 const storeNotes = useNotesStore()
-
 const newNote = ref('')
-const newNoteRef = ref(null)
+const addEditNoteRef = ref(null)
 
 const addNote = () => {
   storeNotes.addNote(newNote.value)
-
   newNote.value = ''
-  newNoteRef.value.focus()
+  addEditNoteRef.value.focusTextarea()
 }
 </script>
