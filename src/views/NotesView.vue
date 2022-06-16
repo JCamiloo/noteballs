@@ -2,6 +2,7 @@
   <div class="notes">
     <AddEditNote
       v-model="newNote"
+      placeholder="Add a new note"
       ref="addEditNoteRef"
     >
       <template v-slot:buttons>
