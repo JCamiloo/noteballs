@@ -21,11 +21,14 @@ export const useNotesStore = defineStore('notesStore', {
         id: new Date().getTime(),
         content: noteContent
       }
-
       this.notes.unshift(note)
     },
     deleteNote(id) {
       this.notes = this.notes.filter(note => note.id !== id)
+    },
+    updateNote(id, content) {
+      const index = this.notes.findIndex(note => note.id == id)
+      this.notes[index].content = content;
     }
   },
   getters: {
