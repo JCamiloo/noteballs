@@ -6,9 +6,12 @@
   >
     <div class="container is-max-desktop">
       <div class="navbar-brand">
-        <div class="navbar-item is-size-4 is-family-monospace">
+        <a
+          class="navbar-item is-size-4 is-family-monospace"
+          @click="$router.push('/')"
+        >
           Noteballs
-        </div>
+        </a>
 
         <a
           role="button"
@@ -32,6 +35,7 @@
       >
         <div class="navbar-end">
           <RouterLink
+            @click="showMobileNav = false"
             to="/"
             class="navbar-item"
             active-class="is-active"
@@ -40,6 +44,7 @@
           </RouterLink>
 
           <RouterLink
+            @click="showMobileNav = false"
             to="/stats"
             class="navbar-item"
             active-class="is-active"
