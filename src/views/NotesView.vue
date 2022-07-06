@@ -17,7 +17,7 @@
     </AddEditNote>
 
     <Note
-      v-for="note in storeNotes.notes"
+      v-for="note in notesStore.notes"
       :key="note.id"
       :note="note"
     />
@@ -27,16 +27,20 @@
 <script setup>
 import { ref } from 'vue'
 import { useNotesStore } from '@/stores/notesStore'
-import AddEditNote from '@/components/notes/AddEditNote.vue';
+import { useWatchCharacters } from '@/use/useWatchCharacters'
+import AddEditNote from '@/components/notes/AddEditNote.vue'
 import Note from '@/components/notes/Note.vue'
 
-const storeNotes = useNotesStore()
+const notesStore = useNotesStore()
 const newNote = ref('')
 const addEditNoteRef = ref(null)
 
 const addNote = () => {
-  storeNotes.addNote(newNote.value)
+  notesStore.addNote(newNote.value)
   newNote.value = ''
   addEditNoteRef.value.focusTextarea()
 }
+
+useWatchCharacters(newNote)
+
 </script>

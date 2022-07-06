@@ -18,7 +18,7 @@
       </RouterLink>
       <a
         class="card-footer-item"
-        @click.prevent="storeNotes.deleteNote(note.id)"
+        @click.prevent="notesStore.deleteNote(note.id)"
       >
         Delete
       </a>
@@ -37,7 +37,7 @@ const props = defineProps({
   }
 })
 
-const storeNotes = useNotesStore();
+const notesStore = useNotesStore();
 
 const characterLength = computed(() => {
   const length = props.note.content.length
