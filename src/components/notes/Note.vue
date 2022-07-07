@@ -33,7 +33,6 @@
 
 <script setup>
 import { computed, reactive } from 'vue'
-import { useNotesStore } from '@/stores/notesStore'
 import ModalDeleteNote from '@/components/notes/ModalDeleteNote.vue'
 
 const props = defineProps({
@@ -42,8 +41,6 @@ const props = defineProps({
     required: true
   }
 })
-
-const notesStore = useNotesStore()
 
 const characterLength = computed(() => {
   const length = props.note.content.length
