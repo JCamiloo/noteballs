@@ -5,11 +5,11 @@ export const useNotesStore = defineStore('notesStore', {
     return {
       notes: [
         {
-          id: 1,
+          id: '1',
           content: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim nesciunt quam laborum quisquam fugiat labore"
         },
         {
-          id: 2,
+          id: '2',
           content: "Shorter note"
         }
       ]
@@ -18,7 +18,7 @@ export const useNotesStore = defineStore('notesStore', {
   actions: {
     addNote(noteContent) {
       const note = {
-        id: new Date().getTime(),
+        id: new Date().getTime().toString(),
         content: noteContent
       }
       this.notes.unshift(note)
@@ -27,13 +27,13 @@ export const useNotesStore = defineStore('notesStore', {
       this.notes = this.notes.filter(note => note.id !== id)
     },
     updateNote(id, content) {
-      const index = this.notes.findIndex(note => note.id == id)
+      const index = this.notes.findIndex(note => note.id === id)
       this.notes[index].content = content;
     }
   },
   getters: {
     getNoteContent: (state) => {
-      return (id) => state.notes.filter(note => note.id == id)[0].content
+      return (id) => state.notes.filter(note => note.id === id)[0].content
     },
     totalNotesCount: (state) => {
       return state.notes.length
