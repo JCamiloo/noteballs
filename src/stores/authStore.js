@@ -19,10 +19,12 @@ export const useAuthStore = defineStore('authStore', {
         if (user) {
           this.user.id = user.uid
           this.user.email = user.email
+          this.router.replace('/')
           return
         }
 
         this.user = {}
+        this.router.replace('/auth')
       })
     },
     registerUser({ email, password }) {

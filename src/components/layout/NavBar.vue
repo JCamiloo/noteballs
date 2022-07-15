@@ -57,7 +57,8 @@
 
         <div class="navbar-end">
           <button
-            @click="authStore.logoutUser()"
+            v-if="authStore.user.id"
+            @click="logout"
             class="button is-small is-info mt-3"
           >
             Log Out
@@ -79,8 +80,13 @@ const navbarMenuRef = ref(null)
 const navbarBurgerRef = ref(null)
 
 onClickOutside(navbarMenuRef, () => {
-  showMobileNav.value = false;
+  showMobileNav.value = false
 }, { ignore: [navbarBurgerRef] })
+
+const logout = () => {
+  showMobileNav.value = false
+  authStore.logoutUser()
+}
 </script>
 
 <style scoped>
@@ -88,6 +94,8 @@ onClickOutside(navbarMenuRef, () => {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+
 
 @media (max-width: 1023px) {
   .navbar-menu {
@@ -99,6 +107,10 @@ onClickOutside(navbarMenuRef, () => {
   .container {
     padding-left: 0.3rem;
     padding-right: 0.3rem;
+  }
+
+  .navbar-end button {
+    margin-left: 0.8rem;
   }
 }
 </style>
