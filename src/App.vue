@@ -8,13 +8,13 @@
 
 <script setup>
 import { onMounted } from 'vue';
-import { useNotesStore } from '@/stores/notesStore';
+import { useAuthStore } from '@/stores/authStore';
 import NavBar from '@/components/layout/NavBar.vue'
 
-const notesStore = useNotesStore()
+const authStore = useAuthStore()
 
 onMounted(() => {
-  notesStore.getNotes()
+  authStore.init()
 })
 </script>
 

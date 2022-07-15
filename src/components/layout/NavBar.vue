@@ -56,7 +56,10 @@
         </div>
 
         <div class="navbar-end">
-          <button class="button is-small is-info mt-3">
+          <button
+            @click="authStore.logoutUser()"
+            class="button is-small is-info mt-3"
+          >
             Log Out
           </button>
         </div>
@@ -68,7 +71,9 @@
 <script setup>
 import { ref } from 'vue'
 import { onClickOutside } from '@vueuse/core'
+import { useAuthStore } from '@/stores/authStore'
 
+const authStore = useAuthStore()
 const showMobileNav = ref(false)
 const navbarMenuRef = ref(null)
 const navbarBurgerRef = ref(null)
