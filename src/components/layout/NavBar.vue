@@ -30,6 +30,7 @@
       </div>
 
       <div
+        v-if="authStore.user.id"
         id="navbarBasicExample"
         class="navbar-menu"
         :class="{ 'is-active': showMobileNav }"
@@ -57,7 +58,6 @@
 
         <div class="navbar-end">
           <button
-            v-if="authStore.user.id"
             @click="logout"
             class="button is-small is-info mt-3"
           >

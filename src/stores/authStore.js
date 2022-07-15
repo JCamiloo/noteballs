@@ -34,25 +34,15 @@ export const useAuthStore = defineStore('authStore', {
       })
     },
     registerUser({ email, password }) {
-      createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-        const user = userCredential.user
-        console.log('user', user)
-      }).catch(error => {
-        console.log('error', error.message)
-      })
+      createUserWithEmailAndPassword(auth, email, password)
     },
     loginUser({ email, password }) {
-      signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-        const user = userCredential.user
-        console.log('loginUser', user)
-      }).catch(error => {
-        console.log('error', error.message)
-      })
+      signInWithEmailAndPassword(auth, email, password)
     },
     logoutUser() {
       signOut(auth).then(() => {
         this.router.replace('/auth')
-      }).catch(error => console.log(error))
+      })
     }
   }
 })
